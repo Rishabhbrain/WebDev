@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text-to-Speech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/5.5.3/css/ionicons.min.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('https://c4.wallpaperflare.com/wallpaper/39/346/426/digital-art-men-city-futuristic-night-hd-wallpaper-preview.jpg');
+      background-size: cover;
+    }
+    .container {
+      text-align: center;
+    }
+    textarea {
+      width: 300px;
+      height: 150px;
+      resize: none;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #007bff;
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #333;
+    }
+    .btn-group {
+      margin-top: 10px;
+    }
+    .btn {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 5px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-clear {
+      background-color: #dc3545;
+    }
+    .man-clipart {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://png.pngitem.com/pimgs/s/160-1602527_radio-spot-icon-microphone-icon-green-png-transparent.png');
+      background-size: cover;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <textarea id="textToSpeak" placeholder="Enter text to speak..."></textarea>
+    <div class="btn-group">
+      <button class="btn" onclick="speakText()">Speak <i class="icon ion-md-volume-high"></i></button>
+      <button class="btn btn-clear" onclick="clearText()">Clear <i class="icon ion-md-close"></i></button>
+    </div>
+    <div class="man-clipart"></div>
+  </div>
+
+  <script>
+    function speakText() {
+      const text = document.getElementById('textToSpeak').value;
+      const speech = new SpeechSynthesisUtterance(text);
+      speechSynthesis.speak(speech);
+    }
+
+    function clearText() {
+      document.getElementById('textToSpeak').value = '';
+    }
+  </script>
+</body>
+</html>
